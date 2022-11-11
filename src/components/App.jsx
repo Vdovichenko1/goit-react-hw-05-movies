@@ -18,7 +18,7 @@ export const App = () => {
             <Route path="reviews" element={<Reviews />}></Route>
           </Route>
         </Route>
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="*" element={<Navigate to="/goit-react-hw-05-movies" />} />
       </Routes>
     </div>
   );
