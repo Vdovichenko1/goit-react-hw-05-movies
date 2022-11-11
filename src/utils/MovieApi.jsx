@@ -14,7 +14,7 @@ export const MovieApi = async () => {
 };
 
 export const SearchMovieApi = async query => {
-  const response = await axios.get(`search/movie/`, {
+  const response = await axios.get(`search/movie`, {
     params: {
       query: query,
       api_key: KEY,

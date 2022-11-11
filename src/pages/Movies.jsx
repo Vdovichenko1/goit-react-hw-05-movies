@@ -21,7 +21,7 @@ export default function Movies() {
     setBtn(false);
     const query = e.target.value;
     setQuery(query !== '' ? { query } : {});
-    console.log(query);
+    // console.log(query);
   };
   const handleSubmitForm = e => {
     e.preventDefault();
@@ -35,6 +35,7 @@ export default function Movies() {
     if (!searchQuery) {
       return;
     }
+    console.log(searchQuery);
     setLoading(true);
     SearchMovieApi(searchQuery)
       .then(({ data }) => setFilm(data.results))
