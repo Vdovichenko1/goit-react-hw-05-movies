@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Nav, NavLinkStyle } from './Navigator.styled';
+import { PacmanLoader } from 'react-spinners';
 
 
 export default function Navigator() {
@@ -10,7 +11,7 @@ export default function Navigator() {
           <NavLinkStyle to='/'>Home</NavLinkStyle>
           <NavLinkStyle to='/movies'>Movies</NavLinkStyle>
       </Nav>
-          <div><Outlet /></div>
+          <Suspense fallback={<PacmanLoader color="black" />}><Outlet /></Suspense>
       </>
   )
 }

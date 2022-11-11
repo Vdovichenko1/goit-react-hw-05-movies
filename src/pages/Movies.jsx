@@ -15,7 +15,7 @@ export default function Movies() {
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
-  const searchQuery = searchParams.get('query');
+  const searchQuery = searchParams.get('query') ?? '';
 
   const handleQuery = e => {
     setBtn(false);
