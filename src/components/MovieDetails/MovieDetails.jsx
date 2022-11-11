@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { CompleteInfoMovieApi } from 'utils/MovieApi';
+import { DetailsImage, DetailsInfo, DetailsLink, InformationDetails, InformationNavLink, MovieInfo, TitleMovie, UserScore } from './MovieDetails.styled';
 
 export default function MovieDetails() {
   const [film, setFilm] = useState(null);
@@ -17,24 +18,24 @@ export default function MovieDetails() {
 
   return (
     <div>
-      <NavLink to={location.state?.from ?? '/'}>Go back</NavLink>
+      <DetailsLink to={location.state?.from ?? '/'}> Go back</DetailsLink>
       {film && (
         <section>
             {film.poster_path && (
               <div>
-                <>
-                  <img
+                <DetailsInfo>
+                  <DetailsImage
                     src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
                     alt={film.title}
                     width="300"
                     height="500"
                   />
-                  <ul>
-                    <li>{film.title}</li>
-                    <li>User Score: {film.vote_average}%</li>
-                    <li>Overview </li>
+                  <MovieInfo>
+                    <TitleMovie>{film.title}</TitleMovie>
+                    <UserScore>User Score: {film.vote_average.toFixed(1)}%</UserScore>
+                    <UserScore>Overview </UserScore>
                     <li>{film.overview}</li>
-                    <li>Genres</li>
+                    <UserScore>Genres</UserScore>
                     <li>
                       {film.genres.map(({ name }) => {
                         return (
@@ -44,20 +45,20 @@ export default function MovieDetails() {
                         );
                       })}
                     </li>
-                  </ul>
-                </>
-                <ul>
+                  </MovieInfo>
+                </DetailsInfo>
+                <InformationDetails>
                   <p>Information</p>
-                  <NavLink to="cast" state={{ from: location.state.from }}>
+                  <InformationNavLink to="cast" state={{ from: location.state.from }}>
                     {' '}
                     Cast{' '}
-                  </NavLink>
-                  <NavLink to="reviews" state={{ from: location.state.from }}>
+                  </InformationNavLink>
+                  <InformationNavLink to="reviews" state={{ from: location.state.from }}>
                     {' '}
                     Reviews{' '}
-                  </NavLink>
+                  </InformationNavLink>
                   <Outlet />
-                </ul>
+                </InformationDetails>
               </div>
             )}
         </section>
